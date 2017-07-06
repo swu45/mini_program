@@ -10,3 +10,4 @@ for i_fl in filter_list:
     if output_string:
         print '输入内容包含违禁词: {}'.format(i_fl)
         sys.exit()
+        

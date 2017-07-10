@@ -7,6 +7,7 @@
 @time: 2017/7/10 14:09
 """
 
+# 备注：拢共需要输入四个内容：发件邮箱、密码，以及收件人和SMTP地址
 
 from email import encoders
 from email.header import Header

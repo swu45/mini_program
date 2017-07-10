@@ -7,7 +7,9 @@
 @time: 2017/7/10 14:09
 """
 
-# 备注：拢共需要输入四个内容：发件邮箱、密码，以及收件人和SMTP地址
+# 备注：拢共需要输入四个内容: 发件邮箱、密码，以及收件人和SMTP地址
+# 功能较简单，仅为文本内容发送，需要插入附件、内容加密等可参考文档: 
+# http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432005226355aadb8d4b2f3f42f6b1d6f2c5bd8d5263000
 
 from email import encoders
 from email.header import Header

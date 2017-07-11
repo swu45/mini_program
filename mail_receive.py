@@ -82,6 +82,14 @@ def print_info(msg, indent=0):
         else:
             # 不是文本,作为附件处理:
             print('%sAttachment: %s' % ('  ' * indent, content_type))
+            for par in msg.walk():
+                name = decode_str(par.get_filename())
+                if name:
+                    print 'attachment name is: %s' % name
+                    data = par.get_payload(decode=True)
+                    f = open(name, 'wb')
+                    f.write(data)    # 下载附件
+                    f.close()
 
 def decode_str(s):
     value, charset = decode_header(s)[0]

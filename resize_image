@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+
+from PIL import Image
+
+
+# 读取图像
+im = Image.open(r'E:\...\...\..\IMG_origin.jpg')
+
+# 打印原始图片的宽和高
+print im.size
+img_width, img_height = im.size
+
+# 调整大小（最长边不大于4096px）
+if img_width > 4096:
+    img_height = img_height * 4096 / img_width
+    img_width = 4096
+if img_height > 4096:
+    img_width = img_width * 4096 / img_height
+    img_height = 4096
+im_resized = im.resize((img_width, img_height))
+
+# 保存图片
+# im_resized.save(r'E:\...\...\..\IMG_resize.jpg')
+
+# 打印调整后的宽和高
+print im_resized.size
+# 展示图片
+# im_resized.show()

@@ -12,6 +12,7 @@ import email
 from email.parser import Parser
 from email.header import decode_header
 from email.utils import parseaddr
+from PIL imoprt Image
 
 
 # 输入邮件地址, 口令和POP3服务器地址:
@@ -87,9 +88,21 @@ def print_info(msg, indent=0):
                 if name:
                     print 'attachment name is: %s' % name
                     data = part.get_payload(decode=True)
+                    img_download_path = r'E:\...\...\...\img_download\%s' % name  # （图片）下载路径
+                    img_resize_path = r'E:\...\...\...\img_resize\%s' % name  # 重新调整大小的保存路径
                     f = open(name, 'wb')
                     f.write(data)    # 下载附件
                     f.close()
+                    img = Image.open(img_download_path)  # 利用PIL模块，调整图片大小，使得符合要求
+                    img_width, img_height = img.size
+                    if img_width > 4096:
+                        img_height = img_height * 4096 / img_width
+                        img_width = 4096
+                    if img_height > 4096:
+                        img_width = img_width * 4096 / img_height
+                        img_height = 4096
+                    img_resized = img.resize((img_width, img_height))
+                    img_resized.save(img_resize_path)
 
 def decode_str(s):
     value, charset = decode_header(s)[0]
